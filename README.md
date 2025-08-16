@@ -26,7 +26,3 @@ Aqui você encontrará:
    pip install pandas matplotlib seaborn
    ```
 3. Execute os notebooks ou scripts Python de acordo com seu interesse.
-
----
-
-Sinta-se à vontade para explorar, estudar e adaptar os
