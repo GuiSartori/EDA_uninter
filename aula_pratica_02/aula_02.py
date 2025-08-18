@@ -58,12 +58,54 @@ plt.figure(figsize=(8, 8))  # Define o tamanho da figura
 plt.pie(
     sizes,
     labels=labels,
-    explode=(0, 0, 0.1, 0.2, 0.3),  # Destaque para algumas fatias
-    autopct='%1.3f%%',               # Mostra porcentagem com 3 casas decimais
-    labeldistance=1,                 # Distância dos rótulos
-    startangle=90                    # Começa o gráfico do topo
+    explode=(0, 0, 0.1, 0.3, 0.5), # Destaque para algumas fatias
+    autopct='%1.3f%%', # Mostra porcentagem com 3 casas decimais
+    labeldistance=1, # Distância dos rótulos
+    startangle=90 # Começa o gráfico do topo
 )
 plt.legend(bbox_to_anchor=(1.05, 0.7), loc='upper left', title='Cor/Raça')
 plt.title('Distribuição de Cor/Raça')
 plt.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
 plt.show()
+
+# %%
+sizes = df.V0404.value_counts() # Tamanho das fatias
+sizes.plot( # Plotagem do gráfico
+    kind='pie',
+    autopct='%1.1f%%',
+    figsize=(8, 8),
+    startangle=90,
+    legend=True,
+    labeldistance=1
+) 
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
+plt.legend(
+    bbox_to_anchor=(1.05, 0.7),
+    loc='upper left',
+    title='Cor/Raça'
+)
+# %% Gráfico de frequência absoluta
+sizes = df.V0404
+plt.figure(figsize=(5, 5))
+sns.histplot(sizes, bins=5)
+plt.ylabel('')
+plt.title('Frequência Absoluta de Cor/Raça')
+# %% Gráfico de frequência acumulada
+sizes = df.V0404
+plt.figure(figsize=(5, 5))
+sns.histplot(sizes, bins=5, cumulative=True)
+plt.ylabel('')
+plt.title('Frequência Acumulada de Cor/Raça')
+# %%
+sizes = df.V0404.sort_values(ascending=False)
+plt.figure(figsize=(5, 5))
+sns.histplot(sizes, bins=5, cumulative=True)
+plt.ylabel('')
+plt.title('Frequência Acumulada de Cor/Raça')
+# %% Gráfico de frequência relativa
+sizes = np.divide(df.V0404.value_counts(), len(df.V0404))  # Frequência relativa 
+plt.plot(sizes)
+plt.figure(figsize=(5, 5))
+plt.ylabel('Frequência Relativa')
+plt.show()
+# %%
