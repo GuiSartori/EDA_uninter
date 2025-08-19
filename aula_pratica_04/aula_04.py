@@ -11,5 +11,13 @@ df1.head()
 
 # %% Séries: Temporais e Geográficas
 series = pd.read_csv(r'..\data\daily-total-female-births.csv', header=0, index_col=0, parse_dates=True)
+
 series.head()
+# %% 
+plt.figure(figsize=(15, 5))  # Define o tamanho da figura
+plt.plot(series)
+plt.ylabel('Total')
+plt.xlabel('Data de aniversário')
+plt.show()
+
 # %%
